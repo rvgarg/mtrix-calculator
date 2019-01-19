@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">My Application</string>
+    <string name="num">Signed Num</string>
+    <string name="btca">Calculate</string>
+    <string name="btres">Reset</string>
+    <string name="txre">Result</string>
 </resources>

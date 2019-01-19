@@ -9,9 +9,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Adjoint extends AppCompatActivity {
-    private int[][] a = new int[3][3];
-    private int[][] adj = new int[3][3];
-    private EditText[][] et = new EditText[3][3];
+    private final int[][] a = new int[3][3];
+    private final int[][] adj = new int[3][3];
+    private final EditText[][] et = new EditText[3][3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +46,7 @@ public class Adjoint extends AppCompatActivity {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++) {
                 String str = et[i][j].getText().toString();
-                if (str.equals(null)) {
+                if (str == null) {
                     Toast toast = Toast.makeText(getApplicationContext(), "enter all values in matrix", Toast.LENGTH_LONG);
                     toast.show();
                     return;

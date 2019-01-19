@@ -7,8 +7,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class Determinant extends AppCompatActivity {
-    private int[][] a = new int[3][3];
-    private EditText[][] et = new EditText[3][3];
+    private final int[][] a = new int[3][3];
+    private final EditText[][] et = new EditText[3][3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

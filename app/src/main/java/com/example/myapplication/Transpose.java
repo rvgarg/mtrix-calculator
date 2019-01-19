@@ -9,8 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Transpose extends AppCompatActivity {
-    private EditText[][] et = new EditText[3][3];
-    private int[][] a = new int[3][3];
+    private final EditText[][] et = new EditText[3][3];
+    private final int[][] a = new int[3][3];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,7 @@ public class Transpose extends AppCompatActivity {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++) {
                 String str = et[i][j].getText().toString();
-                if (str.equals(null)) {
+                if (str == null) {
                     Toast toast = Toast.makeText(getApplicationContext(), "enter all values in matrix", Toast.LENGTH_LONG);
                     toast.show();
                     return;
