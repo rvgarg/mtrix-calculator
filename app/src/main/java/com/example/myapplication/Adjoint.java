@@ -28,13 +28,17 @@ public class Adjoint extends AppCompatActivity {
         et[2][0] = findViewById(R.id.editText7);
         et[2][1] = findViewById(R.id.editText8);
         et[2][2] = findViewById(R.id.editText9);
-        Button btcal = findViewById(R.id.calc);
+        Button btcal = findViewById(R.id.calc), btreset = findViewById(R.id.reset);
         btcal.setOnClickListener(v -> {
             getVal();
             adjoint();
             txt.setText("Adjoint of matrix");
-            print();
-            edoff();
+            print(1);
+            edoff(false);
+        });
+        btreset.setOnClickListener(v -> {
+            edoff(true);
+            print(0);
         });
     }
 
@@ -52,10 +56,13 @@ public class Adjoint extends AppCompatActivity {
             }
     }
 
-    private void print() {
+    private void print(int a) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                et[i][j].setText(adj[j][i] + "");
+                if (a == 1)
+                    et[i][j].setText(adj[j][i] + "");
+                else
+                    et[i][j].setText(null);
             }
         }
     }
@@ -72,10 +79,10 @@ public class Adjoint extends AppCompatActivity {
         adj[2][2] = a[0][0] * a[1][1] - a[1][0] * a[0][1];
     }
 
-    private void edoff() {
+    private void edoff(boolean b) {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++) {
-                et[i][j].setEnabled(false);
+                et[i][j].setEnabled(b);
             }
     }
 }

@@ -17,7 +17,6 @@ public class Transpose extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_determinant);
         TextView txt = findViewById(R.id.result);
-        txt.setVisibility(View.INVISIBLE);
         et[0][0] = findViewById(R.id.editText1);
         et[0][1] = findViewById(R.id.editText2);
         et[0][2] = findViewById(R.id.editText3);
@@ -27,13 +26,17 @@ public class Transpose extends AppCompatActivity {
         et[2][0] = findViewById(R.id.editText7);
         et[2][1] = findViewById(R.id.editText8);
         et[2][2] = findViewById(R.id.editText9);
-        Button btcal = findViewById(R.id.calc);
+        Button btcal = findViewById(R.id.calc), btreset = findViewById(R.id.reset);
         btcal.setOnClickListener(v -> {
             getVal();
-            print();
+            print(1);
             txt.setVisibility(View.VISIBLE);
             txt.setText("Transpose of maitrix");
-            edoff();
+            edoff(false);
+        });
+        btreset.setOnClickListener(v -> {
+            edoff(true);
+            print(0);
         });
     }
 
@@ -51,18 +54,20 @@ public class Transpose extends AppCompatActivity {
             }
     }
 
-    private void print() {
+    private void print(int x) {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                et[i][j].setText(a[j][i] + "");
+                if (x == 1) et[i][j].setText(a[j][i] + "");
+                else
+                    et[i][j].setText(null);
             }
         }
     }
 
-    private void edoff() {
+    private void edoff(boolean k) {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++) {
-                et[i][j].setEnabled(false);
+                et[i][j].setEnabled(k);
             }
     }
 }

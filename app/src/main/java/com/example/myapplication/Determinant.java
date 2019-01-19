@@ -24,12 +24,18 @@ public class Determinant extends AppCompatActivity {
         et[2][0] = findViewById(R.id.editText7);
         et[2][1] = findViewById(R.id.editText8);
         et[2][2] = findViewById(R.id.editText9);
-        Button btcal = findViewById(R.id.calc);
+        Button btcal = findViewById(R.id.calc), btreset = findViewById(R.id.reset);
         btcal.setOnClickListener(v -> {
             getVal();
             int ans = cal(a);
 
             txt.setText("" + ans);
+            edoff(false);
+        });
+        btreset.setOnClickListener(v -> {
+            txt.setText("Result");
+            edoff(true);
+            print();
         });
     }
 
@@ -48,5 +54,20 @@ public class Determinant extends AppCompatActivity {
         r = a[1][0] * a[2][1] - a[1][1] * a[2][0];
         fin = a[0][0] * l - a[0][1] * m + a[0][2] * r;
         return fin;
+    }
+
+    private void print() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                et[i][j].setText(null);
+            }
+        }
+    }
+
+    private void edoff(boolean k) {
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++) {
+                et[i][j].setEnabled(k);
+            }
     }
 }
