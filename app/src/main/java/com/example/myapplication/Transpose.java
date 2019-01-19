@@ -31,16 +31,18 @@ public class Transpose extends AppCompatActivity {
         btcal.setOnClickListener(v -> {
             getVal();
             print();
-            });
+            txt.setVisibility(View.VISIBLE);
+            txt.setText("Transpose of maitrix");
+            edoff();
+        });
     }
 
     private void getVal() {
         for (int i = 0; i < 3; i++)
             for (int j = 0; j < 3; j++) {
-                String str=et[i][j].getText().toString();
-                if(str.equals(null))
-                {
-                    Toast toast=Toast.makeText(getApplicationContext(),"enter all values in matrix",Toast.LENGTH_LONG);
+                String str = et[i][j].getText().toString();
+                if (str.equals(null)) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "enter all values in matrix", Toast.LENGTH_LONG);
                     toast.show();
                     return;
                 }
@@ -48,12 +50,19 @@ public class Transpose extends AppCompatActivity {
 
             }
     }
-    private void print()
-    {
+
+    private void print() {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
-                et[i][j].setText(a[j][i]+"");
+                et[i][j].setText(a[j][i] + "");
             }
         }
+    }
+
+    private void edoff() {
+        for (int i = 0; i < 3; i++)
+            for (int j = 0; j < 3; j++) {
+                et[i][j].setEnabled(false);
+            }
     }
 }
